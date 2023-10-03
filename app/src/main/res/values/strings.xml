@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CartelerApp</string>
+
+    <!-- login -->
+    <string name="title">Bienvenido de nuevo</string>
+    <string name="email">Correo electronico</string>
+    <string name="pass">Contraseña</string>
+    <string name="login">Iniciar sesión</string>
+
+    <!-- bottom navigation -->
+    <string name="profile">Perfil</string>
+    <string name="billboard">Cartelera</string>
+    <string name="ubi">Complejo</string>
+
+    <!-- Error de formato -->
+    <string name="required_field">Campo requerido</string>
+    <string name="incorrect_format">Formato incorrecto</string>
+    <string name="back"><![CDATA[<]]></string>
+
+</resources>
