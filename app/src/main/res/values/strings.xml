@@ -10,7 +10,8 @@
     <!-- bottom navigation -->
     <string name="profile">Perfil</string>
     <string name="billboard">Cartelera</string>
-    <string name="ubi">Complejo</string>
+    <string name="location">Complejo</string>
+    <string name="details">Detalles</string>
 
     <!-- Error de formato -->
     <string name="required_field">Campo requerido</string>

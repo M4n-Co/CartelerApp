@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     tools:context=".home.activity.HomeActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -12,13 +13,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/meowBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/main_graph" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <!--<com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btmNavView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -30,32 +31,19 @@
         app:menu="@menu/bottom_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"/>-->
 
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/meowBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:mbn_countBackgroundColor="#ff6f00"
-        app:mbn_countTextColor="#000"
-        app:mbn_defaultIconColor="#909090"
-        app:mbn_rippleColor="@color/primary"
-        app:mbn_selectedIconColor="@color/primary"
-        app:mbn_shadowColor="#5000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:mbn_countBackgroundColor="#ff6f00"
-        app:mbn_countTextColor="#000"
-        app:mbn_defaultIconColor="#909090"
-        app:mbn_rippleColor="@color/primary"
-        app:mbn_selectedIconColor="@color/primary"
-        app:mbn_shadowColor="#5000"
+        app:menu="@menu/bottom_menu"
+        android:outlineAmbientShadowColor="@color/primary"
+        app:mbn_circleColor="@color/middle_color"
+        app:mbn_backgroundBottomColor="@color/primary_aux"
+        app:mbn_defaultIconColor="@color/white"
+        app:mbn_rippleColor="#2f424242"
+        app:mbn_selectedIconColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

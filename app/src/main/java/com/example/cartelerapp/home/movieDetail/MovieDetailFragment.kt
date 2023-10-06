@@ -30,13 +30,19 @@ class MovieDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         fActivity = (activity as? HomeActivity)!!
+        initUI()
 
+    }
+
+    private fun initUI(){
         initVideoView()
+        listeners()
+    }
 
+    private fun listeners() {
         binding.btnBack.setOnClickListener {
             fActivity.onBackPressed()
         }
-
     }
 
     private fun initVideoView() {
