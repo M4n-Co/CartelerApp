@@ -19,6 +19,7 @@ class BillboardFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var adatador : MoviesAdapter
+    private lateinit var fActivity : HomeActivity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +32,19 @@ class BillboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fActivity = (activity as? HomeActivity)!!
+        initUI()
+    }
+
+    private fun initUI() {
         initRecycler()
+        initListeners()
+    }
+
+    private fun initListeners() {
+        binding.btnBack.setOnClickListener {
+            fActivity.onBackPressed()
+        }
     }
 
     private fun initRecycler() {

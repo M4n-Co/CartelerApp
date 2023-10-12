@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CartelerApp</string>
+    <string name="title">Welcome back</string>
+    <string name="email">E-mail</string>
+    <string name="pass">Password</string>
+    <string name="login">Log in</string>
+    <string name="profile">Profile</string>
+    <string name="billboard">Billboard</string>
+    <string name="location">Location</string>
+    <string name="details">Details</string>
+    <string name="required_field">Required field</string>
+    <string name="incorrect_format">Incorrect format</string>
+    <string name="back"><![CDATA[<]]></string>
+</resources>

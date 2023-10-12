@@ -6,17 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.MediaController
-import com.example.cartelerapp.R
 import com.example.cartelerapp.databinding.FragmentMovieDetailBinding
 import com.example.cartelerapp.home.activity.HomeActivity
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
 
-class MovieDetailFragment : Fragment() {
+class MovieDetailFragment : Fragment(){
 
     private var _biding : FragmentMovieDetailBinding? = null
     private val binding get() = _biding!!
 
     private lateinit var fActivity : HomeActivity
+    private  var mPlayer : ExoPlayer? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,27 +32,33 @@ class MovieDetailFragment : Fragment() {
 
         fActivity = (activity as? HomeActivity)!!
         initUI()
-
     }
 
     private fun initUI(){
-        initVideoView()
-        listeners()
+        initListeners()
+        initVideo()
     }
 
-    private fun listeners() {
+    private fun initVideo() {
+        with(binding){
+            mPlayer = ExoPlayer.Builder(requireContext()).build()
+            playerView.player = mPlayer
+            val mediaItem = MediaItem.fromUri("https://strapistorage.blob.core.windows.net/videos/T16%20MASTER/T16-13-ARMS%20WORKOUT-BYRON.mp4")
+            mPlayer?.setMediaItem(mediaItem)
+            mPlayer?.prepare()
+            mPlayer?.playWhenReady = true
+        }
+    }
+    private fun initListeners() {
         binding.btnBack.setOnClickListener {
             fActivity.onBackPressed()
         }
     }
 
-    private fun initVideoView() {
-        val uri = Uri.parse("http://techslides.com/demos/sample-videos/small.mp4")
-        binding.vvTeaser.setVideoURI(uri)
-
-        val mediaController = MediaController(requireContext())
-        binding.vvTeaser.setMediaController(mediaController)
-        mediaController.setAnchorView(binding.vvTeaser)
+    override fun onStop() {
+        super.onStop()
+        mPlayer?.playWhenReady = false
+        mPlayer?.release()
+        mPlayer = null
     }
-
 }

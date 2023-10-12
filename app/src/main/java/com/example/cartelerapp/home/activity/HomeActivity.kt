@@ -53,4 +53,9 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        binding.meowBottom.show(1)
+    }
 }

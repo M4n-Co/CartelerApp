@@ -72,5 +72,8 @@ dependencies {
 
     //Meow bottom navigate
     implementation ("com.etebarian:meow-bottom-navigation:1.2.0")
+
+    //ExoPlayer
+    implementation("com.google.android.exoplayer:exoplayer:2.19.1")
 }
 
