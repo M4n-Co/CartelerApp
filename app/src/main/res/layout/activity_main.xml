@@ -23,10 +23,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/title"
-        android:textColor="@color/white"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/alata"
+        android:textAppearance="@style/Title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivHeader" />
@@ -58,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:fontFamily="@font/alata"
+            android:textAppearance="@style/ToEditText"
             android:textColor="@color/secondary" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -69,10 +66,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/pass"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:textColorHint="@color/secondary"
+        app:endIconMode="password_toggle"
         app:boxBackgroundColor="@color/primary_aux"
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
@@ -90,8 +88,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:fontFamily="@font/alata"
-            android:textColor="@color/secondary" />
+            android:inputType="textPassword"
+            android:textAppearance="@style/ToEditText"
+            android:textColor="@color/secondary"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,15 +103,42 @@
         android:layout_marginEnd="32dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:textSize="20sp"
         android:text="@string/login"
         android:textAllCaps="false"
-        android:fontFamily="@font/alata"
+        android:textAppearance="@style/ToButton"
         app:backgroundTint="@color/secondary"
         app:cornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilPass" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRegistration"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/sign_up"
+        app:cornerRadius="16dp"
+        android:textAppearance="@style/ToEditText"
+        app:strokeColor="@color/secondary"
+        app:strokeWidth="3dp"
+        app:layout_constraintTop_toBottomOf="@id/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/pbLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

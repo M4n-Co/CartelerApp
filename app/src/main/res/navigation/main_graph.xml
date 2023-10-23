@@ -8,12 +8,12 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.cartelerapp.home.profile.ProfileFragment"
+        android:name="com.example.cartelerapp.home.profile.view.ProfileFragment"
         android:label="fragment_perfil"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/billboardFragment"
-        android:name="com.example.cartelerapp.home.billboard.BillboardFragment"
+        android:name="com.example.cartelerapp.home.billboard.view.BillboardFragment"
         android:label="fragment_billboard"
         tools:layout="@layout/fragment_billboard" >
         <action
@@ -24,7 +24,11 @@
         android:id="@+id/movieDetailFragment"
         android:name="com.example.cartelerapp.home.movieDetail.MovieDetailFragment"
         android:label="fragment_movie_detail"
-        tools:layout="@layout/fragment_movie_detail" />
+        tools:layout="@layout/fragment_movie_detail">
+        <argument
+            android:name="entrena"
+            app:argType="com.example.cartelerapp.home.movieDetail.EntrenamientoInfo" />
+    </fragment>
     <fragment
         android:id="@+id/locationFragment"
         android:name="com.example.cartelerapp.home.location.LocationFragment"

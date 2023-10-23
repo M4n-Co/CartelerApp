@@ -2,7 +2,9 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -20,12 +22,21 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            resValue("string", "M4n_Co", "CartelerApp")
+            buildConfigField("String", "BASE_URL", "\"https://shift-cms-dev.ironbit.net/\"")
+        }
+
+        getByName("debug"){
+            isDebuggable = true
+            resValue("string", "M4n_Co", "[DEBUG] CartelerApp")
+            buildConfigField("String", "BASE_URL", "\"https://shift-cms-dev.ironbit.net/\"")
         }
     }
     compileOptions {
@@ -44,7 +55,7 @@ android {
 
 dependencies {
 
-    val navVersion = "2.7.3"
+    val navVersion = "2.7.4"
 
     //NavComponent
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
@@ -75,5 +86,15 @@ dependencies {
 
     //ExoPlayer
     implementation("com.google.android.exoplayer:exoplayer:2.19.1")
+
+    // Import the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-auth-ktx")
+
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:4.13.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.13.0")
+
 }
 

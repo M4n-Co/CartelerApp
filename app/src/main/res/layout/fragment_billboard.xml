@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".home.billboard.BillboardFragment">
+    tools:context=".home.billboard.view.BillboardFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolBar"
@@ -50,9 +50,106 @@
         android:id="@+id/rvBillboard"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/item_movie"
-        tools:itemCount="3"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolBar"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_movie" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSport"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="@string/sport"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="@style/ToEditText"
+            app:cornerRadius="16dp"
+            app:layout_constraintEnd_toStartOf="@id/gl1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/secondary"
+            app:strokeWidth="3dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.33"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGym"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Gym"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="@style/ToEditText"
+            app:cornerRadius="16dp"
+            app:layout_constraintEnd_toStartOf="@id/gl2"
+            app:layout_constraintStart_toEndOf="@id/gl1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/secondary"
+            app:strokeWidth="3dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.66"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnYoga"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Yoga"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="@style/ToEditText"
+            app:cornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gl2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/secondary"
+            app:strokeWidth="3dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/pbBillboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

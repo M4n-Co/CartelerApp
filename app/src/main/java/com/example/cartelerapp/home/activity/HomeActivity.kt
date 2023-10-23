@@ -4,15 +4,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.example.cartelerapp.R
 import com.example.cartelerapp.databinding.ActivityHomeBinding
+import com.example.cartelerapp.login.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityHomeBinding
     private lateinit var navController : NavController
+
+    var uEmail = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +28,13 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
+        obtenerExtras()
         initNavigation()
+    }
+
+    private fun obtenerExtras() {
+        val bundle = intent.extras
+        uEmail = bundle?.getString(MainActivity.EMAIL_KEY).toString()
     }
 
     private fun initNavigation() {

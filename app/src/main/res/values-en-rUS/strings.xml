@@ -1,15 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CartelerApp</string>
+
+    <!-- login -->
     <string name="title">Welcome back</string>
     <string name="email">E-mail</string>
     <string name="pass">Password</string>
     <string name="login">Log in</string>
+
+    <!-- bottom navigation -->
     <string name="profile">Profile</string>
     <string name="billboard">Billboard</string>
     <string name="location">Location</string>
     <string name="details">Details</string>
+
+    <!-- Error de formato -->
     <string name="required_field">Required field</string>
     <string name="incorrect_format">Incorrect format</string>
     <string name="back"><![CDATA[<]]></string>
+
+    <!-- Sign Up -->
+    <string name="sign_up">Sign Up</string>
+    <string name="registration">Registration</string>
+    <string name="init_registration">Start registration</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="gender">Gender</string>
+    <string name="other">Other</string>
+    <string name="woman">Men</string>
+    <string name="men">Hombre</string>
+    <string name="phone">Phone number</string>
+    <string name="peso">weight</string>
+    <string name="height">Height</string>
+    <string name="avatar">Avatar</string>
+    <string name="finish">Finish registration</string>
+
+    <!-- Error de formato -->
+    <string name="error">Error</string>
+    <string name="mensaje">An error occurred authenticating the user</string>
+    <string name="error_login">Error, incorrect email and/or password</string>
+    <string name="aceptar">Accept</string>
+
+    <!-- perfil -->
+    <string name="welcome">Welcome</string>
+
+    <!-- Billboard -->
+    <string name="sport">Sport</string>
+
+    <!-- Detalles fragment -->
+    <string name="aim">Aim</string>
+    <string name="instructions">Instructions</string>
+    <string name="description">Description</string>
+    <string name="exercise">N. Exercise</string>
+    <string name="series">N. Series</string>
 </resources>

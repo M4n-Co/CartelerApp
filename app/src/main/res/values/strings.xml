@@ -18,4 +18,40 @@
     <string name="incorrect_format">Formato incorrecto</string>
     <string name="back"><![CDATA[<]]></string>
 
+    <!-- Sign Up -->
+    <string name="sign_up">Registrar</string>
+    <string name="registration">Registro</string>
+    <string name="init_registration">Iniciar registro</string>
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="birthdate">Fecha de nacimiento</string>
+    <string name="gender">Género</string>
+    <string name="other">Otro</string>
+    <string name="woman">Mujer</string>
+    <string name="men">Hombre</string>
+    <string name="phone">Telefono</string>
+    <string name="peso">Peso</string>
+    <string name="height">Estatura</string>
+    <string name="avatar">Avatar</string>
+    <string name="finish">Terminar registro</string>
+
+    <!-- Error de formato -->
+    <string name="error">Error</string>
+    <string name="mensaje">Se ha produciodo un error autentificando al usuario</string>
+    <string name="error_login">Error, correo y/o contraseña incorrectos</string>
+    <string name="aceptar">Aceptar</string>
+
+    <!-- perfil -->
+    <string name="welcome">Bienvenido</string>
+
+    <!-- Billboard -->
+    <string name="sport">Deporte</string>
+
+    <!-- Detalles fragment -->
+    <string name="aim">Objetivo</string>
+    <string name="instructions">Instrucciones</string>
+    <string name="description">Descripcion</string>
+    <string name="exercise">N. Ejecisisos</string>
+    <string name="series">N. Series</string>
+
 </resources>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/primary"
-    tools:context=".home.profile.ProfileFragment">
+    tools:context=".home.profile.view.ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolBar"
@@ -51,9 +51,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginStart="16dp"
-        android:text="Bienvenido:"
-        android:textSize="24sp"
-        android:fontFamily="@font/alata"
+        android:text="@string/welcome"
+        android:textAppearance="@style/textBody"
         android:textColor="@color/secondary"
         app:layout_constraintTop_toBottomOf="@id/ivProfile"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -64,10 +63,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
-        android:text="M4n_Co"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:fontFamily="@font/alata"
+        android:text="-----"
+        android:textAppearance="@style/textBody"
         app:layout_constraintTop_toTopOf="@id/tvWelcome"
         app:layout_constraintStart_toEndOf="@id/tvWelcome"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -80,8 +77,7 @@
         android:layout_marginStart="15dp"
         android:text="@string/email"
         android:textColor="@color/secondary"
-        android:textSize="24sp"
-        android:fontFamily="@font/alata"
+        android:textAppearance="@style/textBody"
         app:layout_constraintTop_toBottomOf="@id/tvWelcome"
         app:layout_constraintStart_toStartOf="parent"/>
     <TextView
@@ -90,11 +86,62 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:text="correo@ejemplo.com"
-        android:textSize="24sp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/alata"
+        android:text="--------"
+        android:textAppearance="@style/textBody"
         app:layout_constraintTop_toBottomOf="@id/tvEmailTitle"
         app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="15dp"
+        android:text="@string/height"
+        android:textColor="@color/secondary"
+        android:textAppearance="@style/textBody"
+        app:layout_constraintTop_toBottomOf="@id/tvUserEmail"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+        android:id="@+id/tvHeightUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="--------"
+        android:textAppearance="@style/textBody"
+        app:layout_constraintTop_toTopOf="@id/tvHeight"
+        app:layout_constraintStart_toEndOf="@id/tvHeight"/>
+
+    <TextView
+        android:id="@+id/tvWidth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="15dp"
+        android:text="@string/peso"
+        android:textColor="@color/secondary"
+        android:textAppearance="@style/textBody"
+        app:layout_constraintTop_toBottomOf="@id/tvHeight"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvWidthUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="--------"
+        android:textAppearance="@style/textBody"
+        app:layout_constraintStart_toEndOf="@+id/tvWidth"
+        app:layout_constraintTop_toTopOf="@+id/tvWidth" />
+
+    <ProgressBar
+        android:id="@+id/pbInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
