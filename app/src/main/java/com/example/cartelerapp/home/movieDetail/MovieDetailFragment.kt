@@ -19,8 +19,8 @@ class MovieDetailFragment : Fragment(){
     private lateinit var fActivity : HomeActivity
     private  var mPlayer : ExoPlayer? = null
 
-    private val args : MovieDetailFragmentArgs by navArgs()
-    private val entrenamiento : EntrenamientoInfo get() = args.entrena
+//    private val args : MovieDetailFragmentArgs by navArgs()
+//    private val entrenamiento : EntrenamientoInfo get() = args.entrena
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,41 +33,41 @@ class MovieDetailFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         fActivity = (activity as? HomeActivity)!!
-        initUI()
+        //initUI()
 
     }
 
-    private fun initUI(){
-        initListeners()
-        setInfo()
-    }
-
-    private fun setInfo() {
-        with(binding){
-            tvTitle.text = entrenamiento.nombre
-            tvTitle.isSelected = true
-
-            tvAim.text = entrenamiento.objetivo
-            tvDescription.text = entrenamiento.descripcion
-            tvInstructions.text = entrenamiento.instrucciones
-            tvExercisesNumber.text = entrenamiento.numeroEjercicios.toString()
-            tvSeriesNumber.text = entrenamiento.numeroSeries.toString()
-        }
-        initVideo()
-    }
-
-    private fun initVideo() {
-        with(binding){
-            mPlayer = ExoPlayer.Builder(requireContext()).build()
-            playerView.player = mPlayer
-            val mediaItem = entrenamiento.mediaSource?.let { MediaItem.fromUri(it) }
-            if (mediaItem != null) {
-                mPlayer?.setMediaItem(mediaItem)
-            }
-            mPlayer?.prepare()
-            mPlayer?.playWhenReady = true
-        }
-    }
+//    private fun initUI(){
+//        initListeners()
+//        setInfo()
+//    }
+//
+//    private fun setInfo() {
+//        with(binding){
+//            tvTitle.text = entrenamiento.nombre
+//            tvTitle.isSelected = true
+//
+//            tvAim.text = entrenamiento.objetivo
+//            tvDescription.text = entrenamiento.descripcion
+//            tvInstructions.text = entrenamiento.instrucciones
+//            tvExercisesNumber.text = entrenamiento.numeroEjercicios.toString()
+//            tvSeriesNumber.text = entrenamiento.numeroSeries.toString()
+//        }
+//        initVideo()
+//    }
+//
+//    private fun initVideo() {
+//        with(binding){
+//            mPlayer = ExoPlayer.Builder(requireContext()).build()
+//            playerView.player = mPlayer
+//            val mediaItem = entrenamiento.mediaSource?.let { MediaItem.fromUri(it) }
+//            if (mediaItem != null) {
+//                mPlayer?.setMediaItem(mediaItem)
+//            }
+//            mPlayer?.prepare()
+//            mPlayer?.playWhenReady = true
+//        }
+//    }
     private fun initListeners() {
         binding.btnBack.setOnClickListener {
             fActivity.onBackPressed()

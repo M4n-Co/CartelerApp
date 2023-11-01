@@ -20,7 +20,7 @@ class BillboardViewModel @Inject constructor(
     val billboardResult = MutableLiveData<BillboardResponse>()
 
     fun getBillboard(sectionId : String){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO){
             loading.postValue(true)
 
             val response = repository.getBillboard(sectionId)

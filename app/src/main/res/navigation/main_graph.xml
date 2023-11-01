@@ -17,21 +17,21 @@
         android:label="fragment_billboard"
         tools:layout="@layout/fragment_billboard" >
         <action
-            android:id="@+id/action_billboardFragment_to_movieDetailFragment"
-            app:destination="@id/movieDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/movieDetailFragment"
-        android:name="com.example.cartelerapp.home.movieDetail.MovieDetailFragment"
-        android:label="fragment_movie_detail"
-        tools:layout="@layout/fragment_movie_detail">
-        <argument
-            android:name="entrena"
-            app:argType="com.example.cartelerapp.home.movieDetail.EntrenamientoInfo" />
+            android:id="@+id/action_billboardFragment_to_videoAndDetailsActivity2"
+            app:destination="@id/videoAndDetailsActivity" />
     </fragment>
     <fragment
         android:id="@+id/locationFragment"
         android:name="com.example.cartelerapp.home.location.LocationFragment"
         android:label="fragment_ubication"
         tools:layout="@layout/fragment_location" />
+    <activity
+        android:id="@+id/videoAndDetailsActivity"
+        android:name="com.example.cartelerapp.home.movieDetail.VideoAndDetailsActivity"
+        android:label="VideoAndDetailsActivity"
+        tools:layout="@layout/activity_video_and_details">
+        <argument
+            android:name="entrena"
+            app:argType="com.example.cartelerapp.home.movieDetail.EntrenamientoInfo" />
+    </activity>
 </navigation>

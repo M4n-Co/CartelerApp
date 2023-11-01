@@ -1,6 +1,9 @@
 package com.example.cartelerapp.home.billboard.view
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.system.Os.remove
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +21,10 @@ import com.example.cartelerapp.home.billboard.response.Card
 import com.example.cartelerapp.home.billboard.response.Entrenamiento
 import com.example.cartelerapp.home.billboard.viewModel.BillboardViewModel
 import com.example.cartelerapp.home.movieDetail.EntrenamientoInfo
+import com.example.cartelerapp.login.MainActivity
+import com.example.cartelerapp.splash.LoadingActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -69,6 +76,18 @@ class BillboardFragment : Fragment() {
             fActivity.onBackPressed()
         }
 
+        binding.btnLogout.setOnClickListener {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.logout_title)
+                .setMessage(R.string.message_logout)
+                .setPositiveButton(R.string.accept){_,_ ->
+                    logout()
+                }
+                .setNegativeButton(R.string.cancel){_,_ ->
+
+                }.show()
+        }
+
         binding.btnSport.setOnClickListener {
             setButtonSelection(true, false, false)
             viewModel.getBillboard("6530106ef252830d42ae9d00")
@@ -85,6 +104,18 @@ class BillboardFragment : Fragment() {
         }
 
         binding.btnSport.performClick()
+    }
+
+    private fun logout() {
+        val sharedPreferences = requireActivity().getSharedPreferences(LoadingActivity.SHARED_KEY, Context.MODE_PRIVATE)
+        val editShared = sharedPreferences.edit()
+        editShared.apply {
+            remove(LoadingActivity.EMAIL_KEY)
+        }.apply()
+
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        startActivity(intent)
+        fActivity.finish()
     }
 
     private fun setButtonSelection(sport: Boolean, gym: Boolean, yoga: Boolean) {
@@ -150,7 +181,7 @@ class BillboardFragment : Fragment() {
         )
 
         findNavController().navigate(
-            BillboardFragmentDirections.actionBillboardFragmentToMovieDetailFragment(entrena)
+            BillboardFragmentDirections.actionBillboardFragmentToVideoAndDetailsActivity2(entrena)
         )
 
     }

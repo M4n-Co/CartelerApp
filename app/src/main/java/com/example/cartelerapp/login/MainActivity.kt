@@ -1,24 +1,23 @@
 package com.example.cartelerapp.login
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
 import com.example.cartelerapp.R
 import com.example.cartelerapp.home.activity.HomeActivity
 import com.example.cartelerapp.databinding.ActivityMainBinding
 import com.example.cartelerapp.signUp.view.SignUpActivity
+import com.example.cartelerapp.splash.LoadingActivity
 import com.google.firebase.auth.FirebaseAuth
 import java.util.regex.Pattern
 
 class MainActivity : AppCompatActivity() {
-
-    companion object{
-        const val EMAIL_KEY = "EMAIL"
-    }
 
     private val auth : FirebaseAuth = FirebaseAuth.getInstance()
     private lateinit var binding : ActivityMainBinding
@@ -33,6 +32,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun initUI() {
         initListeners()
+        initTextChangedListener()
+    }
+
+    private fun initTextChangedListener() {
+        binding.etEmail.doAfterTextChanged {
+            binding.tilEmail.error = null
+        }
+        binding.etPass.doAfterTextChanged {
+            binding.tilPass.error = null
+        }
     }
 
     private fun initListeners() {
@@ -64,12 +73,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun login(uEmail:String) {
-        binding.etEmail.setText("")
-        binding.etPass.setText("")
+
+        val sharedPreferences = getSharedPreferences(LoadingActivity.SHARED_KEY, Context.MODE_PRIVATE)
+        val editShared = sharedPreferences.edit()
+        editShared.apply {
+            putString(LoadingActivity.EMAIL_KEY, uEmail)
+        }.apply()
+
         val intent = Intent(this, HomeActivity::class.java).apply {
-            putExtra(EMAIL_KEY, uEmail)
+            putExtra(LoadingActivity.EMAIL_KEY, uEmail)
         }
         startActivity(intent)
+        finish()
     }
     private fun showError() {
         val builder = AlertDialog.Builder(this)

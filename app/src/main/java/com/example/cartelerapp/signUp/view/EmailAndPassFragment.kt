@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.doAfterTextChanged
 import com.example.cartelerapp.R
 import com.example.cartelerapp.databinding.FragmentEmailAndPassBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -37,6 +38,16 @@ class EmailAndPassFragment : Fragment() {
 
     private fun initUI() {
         initListeners()
+        initTextChangedListener()
+    }
+
+    private fun initTextChangedListener() {
+        binding.etEmail.doAfterTextChanged {
+            binding.tilEmail.error = null
+        }
+        binding.etPass.doAfterTextChanged {
+            binding.tilPass.error = null
+        }
     }
 
     private fun initListeners() {

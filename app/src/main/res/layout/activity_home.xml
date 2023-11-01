@@ -37,7 +37,6 @@
         android:id="@+id/meowBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:outlineAmbientShadowColor="@color/primary"
         app:mbn_circleColor="@color/middle_color"
         app:mbn_backgroundBottomColor="@color/primary_aux"
         app:mbn_defaultIconColor="@color/white"

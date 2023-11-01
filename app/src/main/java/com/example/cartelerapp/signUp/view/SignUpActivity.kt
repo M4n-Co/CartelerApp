@@ -14,6 +14,7 @@ import com.example.cartelerapp.login.MainActivity
 import com.example.cartelerapp.signUp.interfaceAux.SignUpAux
 import com.example.cartelerapp.signUp.request.NewUserRequest
 import com.example.cartelerapp.signUp.viewModel.SignUpViewModel
+import com.example.cartelerapp.splash.LoadingActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -67,7 +68,7 @@ class SignUpActivity : AppCompatActivity(), SignUpAux {
 
     private fun login() {
         val intent = Intent(this, HomeActivity::class.java).apply {
-            putExtra(MainActivity.EMAIL_KEY, nuEmail)
+            putExtra(LoadingActivity.EMAIL_KEY, nuEmail)
         }
         startActivity(intent)
     }

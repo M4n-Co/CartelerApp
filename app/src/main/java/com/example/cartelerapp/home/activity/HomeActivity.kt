@@ -1,13 +1,17 @@
 package com.example.cartelerapp.home.activity
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.example.cartelerapp.R
 import com.example.cartelerapp.databinding.ActivityHomeBinding
 import com.example.cartelerapp.login.MainActivity
+import com.example.cartelerapp.splash.LoadingActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun obtenerExtras() {
         val bundle = intent.extras
-        uEmail = bundle?.getString(MainActivity.EMAIL_KEY).toString()
+        uEmail = bundle?.getString(LoadingActivity.EMAIL_KEY).toString()
     }
 
     private fun initNavigation() {
@@ -52,9 +56,11 @@ class HomeActivity : AppCompatActivity() {
                     navController.navigate(R.id.profileFragment)
                 }
                 2 -> {
+                    navController.popBackStack(R.id.locationFragment, true)
                     navController.navigate(R.id.billboardFragment)
                 }
                 3 -> {
+                    navController.popBackStack(R.id.billboardFragment,true)
                     navController.navigate(R.id.locationFragment)
                 }
                 else -> {

@@ -76,6 +76,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:textColorHint="@color/secondary"
+                app:helperText="@string/helper_pass"
+                app:helperTextTextColor="@color/secondary"
                 app:endIconMode="password_toggle"
                 app:boxBackgroundColor="@color/primary_aux"
                 app:boxCornerRadiusBottomEnd="10dp"

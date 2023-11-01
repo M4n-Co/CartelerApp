@@ -20,7 +20,7 @@ class ProfileViewModel @Inject constructor(
     val profileResponse = MutableLiveData<ResponseProfile>()
 
     fun getProfileUser(email : String){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO){
             loading.postValue(true)
 
             val response = repository.getProfileUser(email)

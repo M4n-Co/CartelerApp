@@ -20,7 +20,7 @@ class SignUpViewModel @Inject constructor(
     val signUpResult = MutableLiveData<Boolean>()
 
     fun signUpUser(newUser : NewUserRequest){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO){
             loading.postValue(true)
             val response = repository.signUpUser(newUser)
             withContext(Dispatchers.Main){

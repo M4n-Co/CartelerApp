@@ -22,6 +22,7 @@
     <!-- Sign Up -->
     <string name="sign_up">Sign Up</string>
     <string name="registration">Registration</string>
+    <string name="helper_pass">Minimum characters 6, 1 capital letter, 1 number and 1 special character</string>
     <string name="init_registration">Start registration</string>
     <string name="name">Name</string>
     <string name="last_name">Last Name</string>
@@ -31,7 +32,7 @@
     <string name="woman">Men</string>
     <string name="men">Hombre</string>
     <string name="phone">Phone number</string>
-    <string name="peso">weight</string>
+    <string name="weight">weight</string>
     <string name="height">Height</string>
     <string name="avatar">Avatar</string>
     <string name="finish">Finish registration</string>
@@ -54,4 +55,10 @@
     <string name="description">Description</string>
     <string name="exercise">N. Exercise</string>
     <string name="series">N. Series</string>
+
+    <!-- Logout  -->
+    <string name="logout_title">Sign off</string>
+    <string name="message_logout">sure to continue?</string>
+    <string name="accept">Accept</string>
+    <string name="cancel">Cancel</string>
 </resources>

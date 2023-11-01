@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
 import com.example.cartelerapp.R
 import com.example.cartelerapp.databinding.FragmentUserInfoBinding
 import java.text.SimpleDateFormat
@@ -39,6 +40,31 @@ class UserInfoFragment : Fragment() {
 
     private fun initUI() {
         initListeners()
+        initTextChangedListener()
+    }
+
+    private fun initTextChangedListener() {
+        binding.etName.doAfterTextChanged {
+            binding.tilName.error = null
+        }
+        binding.etLastName.doAfterTextChanged {
+            binding.tilLastname.error = null
+        }
+        binding.etBirthdate.doAfterTextChanged {
+            binding.tilBirthdate.error = null
+        }
+        binding.etPhone.doAfterTextChanged {
+            binding.tilPhone.error = null
+        }
+        binding.etWeight.doAfterTextChanged {
+            binding.tilWeight.error = null
+        }
+        binding.etHeight.doAfterTextChanged {
+            binding.tilHeight.error = null
+        }
+        binding.etAvatar.doAfterTextChanged {
+            binding.tilAvatar.error = null
+        }
     }
 
     private fun initListeners() {
