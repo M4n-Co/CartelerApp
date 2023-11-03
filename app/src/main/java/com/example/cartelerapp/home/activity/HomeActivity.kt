@@ -1,16 +1,12 @@
 package com.example.cartelerapp.home.activity
 
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.example.cartelerapp.R
 import com.example.cartelerapp.databinding.ActivityHomeBinding
-import com.example.cartelerapp.login.MainActivity
 import com.example.cartelerapp.splash.LoadingActivity
 import dagger.hilt.android.AndroidEntryPoint
 

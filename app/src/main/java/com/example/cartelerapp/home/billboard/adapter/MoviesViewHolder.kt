@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.cartelerapp.R
 import com.example.cartelerapp.databinding.ItemMovieBinding
 import com.example.cartelerapp.home.billboard.response.Card
 import com.example.cartelerapp.home.billboard.response.Entrenamiento
@@ -19,7 +20,7 @@ class MoviesViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
         Glide.with(context)
             .load(card.imagen.url)
-            //.placeholder(R.drawable.ic_flag_placeholder)
+            .placeholder(R.drawable.ic_logo_peque)
             .into(binding.ivFrontPage)
 
         itemView.setOnClickListener{onClick(card.entrenamiento)}

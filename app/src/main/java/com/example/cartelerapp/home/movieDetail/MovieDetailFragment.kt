@@ -5,11 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.navArgs
 import com.example.cartelerapp.databinding.FragmentMovieDetailBinding
 import com.example.cartelerapp.home.activity.HomeActivity
 import com.google.android.exoplayer2.ExoPlayer
-import com.google.android.exoplayer2.MediaItem
 
 class MovieDetailFragment : Fragment(){
 

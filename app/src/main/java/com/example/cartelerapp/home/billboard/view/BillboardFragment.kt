@@ -3,7 +3,6 @@ package com.example.cartelerapp.home.billboard.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.system.Os.remove
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +23,6 @@ import com.example.cartelerapp.home.movieDetail.EntrenamientoInfo
 import com.example.cartelerapp.login.MainActivity
 import com.example.cartelerapp.splash.LoadingActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

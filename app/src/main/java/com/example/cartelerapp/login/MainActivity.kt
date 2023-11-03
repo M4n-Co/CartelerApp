@@ -1,6 +1,5 @@
 package com.example.cartelerapp.login
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

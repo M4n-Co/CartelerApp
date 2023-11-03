@@ -1,5 +1,6 @@
 package com.example.cartelerapp.signUp.view
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,7 +11,6 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.cartelerapp.R
 import com.example.cartelerapp.databinding.ActivitySignUpBinding
 import com.example.cartelerapp.home.activity.HomeActivity
-import com.example.cartelerapp.login.MainActivity
 import com.example.cartelerapp.signUp.interfaceAux.SignUpAux
 import com.example.cartelerapp.signUp.request.NewUserRequest
 import com.example.cartelerapp.signUp.viewModel.SignUpViewModel
@@ -67,6 +67,13 @@ class SignUpActivity : AppCompatActivity(), SignUpAux {
     }
 
     private fun login() {
+
+        val sharedPreferences = getSharedPreferences(LoadingActivity.SHARED_KEY, Context.MODE_PRIVATE)
+        val editShared = sharedPreferences.edit()
+        editShared.apply {
+            putString(LoadingActivity.EMAIL_KEY, nuEmail)
+        }.apply()
+
         val intent = Intent(this, HomeActivity::class.java).apply {
             putExtra(LoadingActivity.EMAIL_KEY, nuEmail)
         }
