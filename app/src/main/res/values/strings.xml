@@ -60,4 +60,8 @@
     <string name="message_logout">¿Seguro de continuar?</string>
     <string name="accept">Aceptar</string>
     <string name="cancel">Cancelar</string>
+
+    <!-- notifications -->
+    <string name="accept_notifications">Resiviras notificaciones</string>
+    <string name="no_notifications">No resiviras notificaciones</string>
 </resources>
