@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.LinearInterpolator
+import android.widget.Toast
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.cartelerapp.databinding.ActivityLoadingBinding
 import com.example.cartelerapp.home.activity.HomeActivity
@@ -14,6 +15,8 @@ class LoadingActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityLoadingBinding
 
+    private var cont = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         val screenSplash = installSplashScreen()
         super.onCreate(savedInstanceState)
@@ -22,44 +25,24 @@ class LoadingActivity : AppCompatActivity() {
         screenSplash.setKeepOnScreenCondition {false}
 
         initAnimation()
+
     }
 
     private fun initAnimation() {
-        binding.ivLogo.animate().apply {
-            duration = 700
-            interpolator = LinearInterpolator()
-            rotationBy(360f)
-            withEndAction{
-                Thread.sleep(500)
-                secondAnimation()
+        if (cont < 3){
+            binding.ivLogo.animate().apply {
+                duration = 700
+                interpolator = LinearInterpolator()
+                rotationBy(360f)
+                withEndAction {
+                    binding.ivLogo.postDelayed({
+                        cont++
+                        initAnimation() }, 500)
+                }
+                start()
             }
-            start()
-        }
-    }
-
-    private fun secondAnimation() {
-        binding.ivLogo.animate().apply {
-            duration = 700
-            interpolator = LinearInterpolator()
-            rotationBy(360f)
-            withEndAction{
-                Thread.sleep(500)
-                thirdAnimation()
-            }
-            start()
-        }
-    }
-
-    private fun thirdAnimation() {
-        binding.ivLogo.animate().apply {
-            duration = 700
-            interpolator = LinearInterpolator()
-            rotationBy(360f)
-            withEndAction{
-                Thread.sleep(500)
-                loginOrLogear()
-            }
-            start()
+        }else{
+            loginOrLogear()
         }
     }
 

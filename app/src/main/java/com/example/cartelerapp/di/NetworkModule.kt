@@ -2,18 +2,20 @@ package com.example.cartelerapp.di
 
 
 import com.example.cartelerapp.BuildConfig.BASE_URL
-import com.example.cartelerapp.home.billboard.network.BillboardService
 import com.example.cartelerapp.home.billboard.network.GetBillboardService
+import com.example.cartelerapp.home.location.network.GetLocationService
 import com.example.cartelerapp.home.profile.network.ProfileService
 import com.example.cartelerapp.signUp.network.SignUpService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.scopes.ServiceScoped
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -22,10 +24,23 @@ object NetworkModule {
 
     @Singleton
     @Provides
+    @Named("shift")
     fun provideRetrofit(okHttpClient: OkHttpClient):Retrofit{
         return Retrofit
             .Builder()
             .baseUrl(BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    @Named("google")
+    fun provideRetrofitLocation(okHttpClient: OkHttpClient):Retrofit{
+        return Retrofit
+            .Builder()
+            .baseUrl("https://maps.googleapis.com/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -44,25 +59,25 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun signUpUser(retrofit: Retrofit) : SignUpService{
+    fun signUpUser(@Named("shift") retrofit: Retrofit) : SignUpService{
         return retrofit.create(SignUpService::class.java)
     }
 
     @Singleton
     @Provides
-    fun getProfileUser(retrofit: Retrofit) : ProfileService{
+    fun getProfileUser(@Named("shift") retrofit: Retrofit) : ProfileService{
         return retrofit.create(ProfileService::class.java)
     }
 
     @Singleton
     @Provides
-    fun getBillboard(retrofit: Retrofit) : GetBillboardService{
+    fun getBillboard(@Named("shift") retrofit: Retrofit) : GetBillboardService{
         return retrofit.create(GetBillboardService::class.java)
     }
 
     @Singleton
     @Provides
-    fun billboard( retrofit: Retrofit) : BillboardService {
-        return retrofit.create(BillboardService::class.java)
+    fun getLocation(@Named("google") retrofit: Retrofit) : GetLocationService {
+        return retrofit.create(GetLocationService::class.java)
     }
 }

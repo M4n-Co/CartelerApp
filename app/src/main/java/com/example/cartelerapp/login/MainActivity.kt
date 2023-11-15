@@ -64,8 +64,8 @@ class MainActivity : AppCompatActivity() {
         binding.btnLogin.setOnClickListener {
             if (valida()){
 
-                val email = binding.etEmail.text.toString()
-                val pass = binding.etPass.text.toString()
+                val email = binding.etEmail.text.toString().trim()
+                val pass = binding.etPass.text.toString().trim()
 
                 binding.pbLogin.isVisible = true
 
@@ -85,6 +85,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnRegistration.setOnClickListener{
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
@@ -142,7 +143,7 @@ class MainActivity : AppCompatActivity() {
         return !pattern.matcher(email).matches()
     }
     private fun validatePass(cadena: String): Boolean {
-        val patron = Pattern.compile("^(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{5,10}$")
+        val patron = Pattern.compile("^(?=.*[A-Z])(?=.*[0-9])(?=.*[@\$?¡\\-_#.*]).{5,10}$")
         return patron.matcher(cadena).find()
     }
 

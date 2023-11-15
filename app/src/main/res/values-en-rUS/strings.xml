@@ -22,7 +22,10 @@
     <!-- Sign Up -->
     <string name="sign_up">Sign Up</string>
     <string name="registration">Registration</string>
-    <string name="helper_pass">Minimum characters 6, 1 capital letter, 1 number and 1 special character</string>
+    <string name="check_long">Characters 5 a 10</string>
+    <string name="check_numbers">Minimum one number</string>
+    <string name="check_uppercase">Minimum one uppercase</string>
+    <string name="check_characters">Minimum one special character</string>
     <string name="init_registration">Start registration</string>
     <string name="name">Name</string>
     <string name="last_name">Last Name</string>

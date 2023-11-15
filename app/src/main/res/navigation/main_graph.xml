@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/locationFragment"
-        android:name="com.example.cartelerapp.home.location.LocationFragment"
+        android:name="com.example.cartelerapp.home.location.view.LocationFragment"
         android:label="fragment_ubication"
         tools:layout="@layout/fragment_location" />
     <activity

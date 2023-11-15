@@ -46,15 +46,53 @@ class EmailAndPassFragment : Fragment() {
             binding.tilEmail.error = null
         }
         binding.etPass.doAfterTextChanged {
-            binding.tilPass.error = null
+            val pass = binding.etPass.text.toString()
+
+            if (checkPass(pass) && binding.etEmail.text.toString().trim().isNotEmpty()){
+                binding.btnStartRegistration.isEnabled = true
+            }
         }
+    }
+
+    private fun checkPass(pass: String): Boolean {
+        var ok = true
+
+        if (checkUppercase(pass)){
+            binding.ivCheckUppercase.setImageResource(R.drawable.ic_check)
+        }else{
+            binding.ivCheckUppercase.setImageResource(R.drawable.ic_waiting_check)
+            ok = false
+        }
+
+        if (checkNumber(pass)){
+            binding.ivCheckNumber.setImageResource(R.drawable.ic_check)
+        }else{
+            binding.ivCheckNumber.setImageResource(R.drawable.ic_waiting_check)
+            ok = false
+        }
+
+        if (pass.length >= 5){
+            binding.ivCheckLong.setImageResource(R.drawable.ic_check)
+        }else{
+            binding.ivCheckLong.setImageResource(R.drawable.ic_waiting_check)
+            ok = false
+        }
+
+        if (checkSpacialCharacters(pass)){
+            binding.ivCheckCharacters.setImageResource(R.drawable.ic_check)
+        }else{
+            binding.ivCheckCharacters.setImageResource(R.drawable.ic_waiting_check)
+            ok = false
+        }
+
+        return ok
     }
 
     private fun initListeners() {
         binding.btnStartRegistration.setOnClickListener{
             if (valida()){
-                val email = binding.etEmail.text.toString()
-                val pass = binding.etPass.text.toString()
+                val email = binding.etEmail.text.toString().trim()
+                val pass = binding.etPass.text.toString().trim()
 
                 auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
@@ -87,10 +125,6 @@ class EmailAndPassFragment : Fragment() {
             binding.tilPass.requestFocus()
             binding.tilPass.error = getString(R.string.required_field)
             ok = false
-        }else if (validatePass(binding.etPass.text.toString().trim())){
-            binding.tilPass.requestFocus()
-            binding.tilPass.error = getString(R.string.incorrect_format)
-            ok = false
         }
 
         return ok
@@ -100,9 +134,17 @@ class EmailAndPassFragment : Fragment() {
         val pattern = Patterns.EMAIL_ADDRESS
         return !pattern.matcher(email).matches()
     }
-    private fun validatePass(cadena: String): Boolean {
-        val patron = Pattern.compile("^(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{5,10}$")
-        return !patron.matcher(cadena).find()
+    private fun checkUppercase(pass: String): Boolean {
+        val patron = Pattern.compile("[A-Z]")
+        return patron.matcher(pass).find()
+    }
+    private fun checkNumber(pass: String): Boolean {
+        val patron = Pattern.compile("[0-9]")
+        return patron.matcher(pass).find()
+    }
+    private fun checkSpacialCharacters(pass: String): Boolean {
+        val patron = Pattern.compile("[@\$?¡\\-_#.*]")
+        return patron.matcher(pass).find()
     }
 
     private fun showError() {

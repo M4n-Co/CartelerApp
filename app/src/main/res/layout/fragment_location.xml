@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".home.location.LocationFragment">
+    tools:context=".home.location.view.LocationFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolBar"
@@ -19,17 +19,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnBack"
-            android:layout_width="55dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvBack"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:textAlignment="center"
-            app:backgroundTint="@color/secondary"
-            app:icon="@drawable/ic_back"
+            app:cardCornerRadius="25dp"
+            app:cardBackgroundColor="@color/secondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="55dp"
+                android:layout_height="40dp"
+                android:backgroundTint="@color/secondary"
+                android:src="@drawable/ic_back"
+                android:textAlignment="center"
+                android:contentDescription="@null" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:layout_width="wrap_content"
@@ -41,31 +50,54 @@
             android:textColor="@color/secondary"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnLogout"
-            app:layout_constraintStart_toEndOf="@+id/btnBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogout"
-            android:layout_width="55dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvLogout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            app:iconGravity="textStart"
-            app:backgroundTint="@color/secondary"
-            app:icon="@drawable/ic_logout"
+            app:cardCornerRadius="25dp"
+            app:cardBackgroundColor="@color/secondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" >
+            <ImageButton
+                android:id="@+id/btnLogout"
+                android:layout_width="55dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_logout"
+                app:iconGravity="textStart"
+                app:backgroundTint="@color/secondary"
+                android:contentDescription="@null" />
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        android:id="@+id/tvLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:layout_marginTop="32dp"
         android:text="@string/location"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolBar" />
+
+    <fragment
+        android:id="@+id/fMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLocation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

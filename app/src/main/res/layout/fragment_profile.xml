@@ -33,17 +33,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogout"
-            android:layout_width="55dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvLogout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            app:iconGravity="textStart"
-            app:backgroundTint="@color/secondary"
-            app:icon="@drawable/ic_logout"
+            app:cardCornerRadius="25dp"
+            app:cardBackgroundColor="@color/secondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" >
+            <ImageButton
+                android:id="@+id/btnLogout"
+                android:layout_width="55dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_logout"
+                app:iconGravity="textStart"
+                app:backgroundTint="@color/secondary"
+                android:contentDescription="@null" />
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -75,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
-        android:text="-----"
+        tools:text="-----"
         android:textAppearance="@style/textBody"
         app:layout_constraintTop_toTopOf="@id/tvWelcome"
         app:layout_constraintStart_toEndOf="@id/tvWelcome"
@@ -98,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:text="--------"
+        tools:text="--------"
         android:textAppearance="@style/textBody"
         app:layout_constraintTop_toBottomOf="@id/tvEmailTitle"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -119,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="--------"
+        tools:text="--------"
         android:textAppearance="@style/textBody"
         app:layout_constraintTop_toTopOf="@id/tvHeight"
         app:layout_constraintStart_toEndOf="@id/tvHeight"/>
@@ -141,7 +149,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="--------"
+        tools:text="--------"
         android:textAppearance="@style/textBody"
         app:layout_constraintStart_toEndOf="@+id/tvWidth"
         app:layout_constraintTop_toTopOf="@+id/tvWidth" />

@@ -21,7 +21,10 @@
     <!-- Sign Up -->
     <string name="sign_up">Registrar</string>
     <string name="registration">Registro</string>
-    <string name="helper_pass">Minimo caracteres 6, 1 mayuscula, 1 numeor y 1 caractér especial</string>
+    <string name="check_long">Caracteres 5 a 10</string>
+    <string name="check_numbers">Minimo un numero</string>
+    <string name="check_uppercase">Minimo una mayuscula</string>
+    <string name="check_characters">Minimo un carcater especial</string>
     <string name="init_registration">Iniciar registro</string>
     <string name="name">Nombre</string>
     <string name="last_name">Apellido</string>

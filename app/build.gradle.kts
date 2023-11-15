@@ -30,13 +30,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            resValue("string", "M4n_Co", "CartelerApp")
             buildConfigField("String", "BASE_URL", "\"https://shift-cms-dev.ironbit.net/\"")
         }
 
         getByName("debug"){
             isDebuggable = true
-            resValue("string", "M4n_Co", "[DEBUG] CartelerApp")
             buildConfigField("String", "BASE_URL", "\"https://shift-cms-dev.ironbit.net/\"")
         }
     }
@@ -55,8 +53,7 @@ android {
 }
 
 dependencies {
-
-    val navVersion = "2.7.4"
+    val navVersion = "2.7.5"
 
     //NavComponent
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
@@ -96,13 +93,17 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics-ktx")
     //Messaging
     implementation("com.google.firebase:firebase-messaging-ktx")
+    //Libreria de maps
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    //servicio de localizacion
+    implementation("com.google.android.gms:play-services-location:21.0.1") //pendiente de usuar
 
     //Glide
     implementation ("com.github.bumptech.glide:glide:4.13.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.13.0")
 
     //SplashScreen
-    implementation("androidx.core:core-splashscreen:1.0.0-rc01")
+    implementation("androidx.core:core-splashscreen:1.1.0-alpha02")
 
 }
 

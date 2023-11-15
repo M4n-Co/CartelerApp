@@ -10,39 +10,40 @@
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:elevation="20sp"
-        app:cardCornerRadius="35dp"
         app:cardBackgroundColor="@color/primary_aux"
-        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16sp"
-                android:textAppearance="@style/Title"
                 android:text="@string/registration"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textAppearance="@style/Title"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilEmail"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email"
-                android:layout_marginTop="32dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
+                android:hint="@string/email"
                 android:textColorHint="@color/secondary"
                 app:boxBackgroundColor="@color/primary_aux"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -62,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:textAppearance="@style/ToEditText"
-                    android:textColor="@color/secondary"/>
+                    android:textColor="@color/secondary" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,14 +72,11 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/pass"
-                android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:hint="@string/pass"
                 android:textColorHint="@color/secondary"
-                app:helperText="@string/helper_pass"
-                app:helperTextTextColor="@color/secondary"
-                app:endIconMode="password_toggle"
                 app:boxBackgroundColor="@color/primary_aux"
                 app:boxCornerRadiusBottomEnd="10dp"
                 app:boxCornerRadiusBottomStart="10dp"
@@ -87,6 +85,8 @@
                 app:boxStrokeColor="@color/secondary"
                 app:boxStrokeErrorColor="@color/red"
                 app:boxStrokeWidth="2dp"
+                app:endIconMode="password_toggle"
+                app:helperTextTextColor="@color/secondary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tilEmail">
@@ -95,21 +95,103 @@
                     android:id="@+id/etPass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:singleLine="true"
                     android:inputType="textPassword"
+                    android:maxLength="10"
+                    android:singleLine="true"
                     android:textAppearance="@style/ToEditText"
-                    android:textColor="@color/secondary"/>
+                    android:textColor="@color/secondary" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/ivCheckLong"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_waiting_check"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilPass" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/check_long"
+                android:textAppearance="@style/ToText"
+                app:layout_constraintBottom_toBottomOf="@id/ivCheckLong"
+                app:layout_constraintStart_toEndOf="@id/ivCheckLong"
+                app:layout_constraintTop_toTopOf="@id/ivCheckLong" />
+
+            <ImageView
+                android:id="@+id/ivCheckUppercase"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_waiting_check"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivCheckLong" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/check_uppercase"
+                android:textAppearance="@style/ToText"
+                app:layout_constraintBottom_toBottomOf="@id/ivCheckUppercase"
+                app:layout_constraintStart_toEndOf="@id/ivCheckUppercase"
+                app:layout_constraintTop_toTopOf="@id/ivCheckUppercase" />
+
+            <ImageView
+                android:id="@+id/ivCheckNumber"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_waiting_check"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivCheckUppercase" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/check_numbers"
+                android:textAppearance="@style/ToText"
+                app:layout_constraintBottom_toBottomOf="@id/ivCheckNumber"
+                app:layout_constraintStart_toEndOf="@id/ivCheckNumber"
+                app:layout_constraintTop_toTopOf="@id/ivCheckNumber" />
+
+            <ImageView
+                android:id="@+id/ivCheckCharacters"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_waiting_check"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivCheckNumber" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/check_characters"
+                android:textAppearance="@style/ToText"
+                app:layout_constraintBottom_toBottomOf="@id/ivCheckCharacters"
+                app:layout_constraintStart_toEndOf="@id/ivCheckCharacters"
+                app:layout_constraintTop_toTopOf="@id/ivCheckCharacters" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnStartRegistration"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="16dp"
+                android:enabled="false"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:text="@string/init_registration"
@@ -120,7 +202,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilPass" />
+                app:layout_constraintTop_toBottomOf="@+id/ivCheckCharacters" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
