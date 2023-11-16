@@ -352,37 +352,6 @@
                         android:textAppearance="@style/ToEditText"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilAvatar"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/avatar"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:textColorHint="@color/secondary"
-                    app:boxBackgroundColor="@color/primary_aux"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxStrokeColor="@color/secondary"
-                    app:boxStrokeErrorColor="@color/red"
-                    app:boxStrokeWidth="2dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tilHeight">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etAvatar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:textColor="@color/secondary"
-                        android:textAppearance="@style/ToEditText"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFinishSignUp"
                     android:layout_width="0dp"
@@ -401,7 +370,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tilAvatar" />
+                    app:layout_constraintTop_toBottomOf="@id/tilHeight" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

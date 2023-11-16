@@ -38,6 +38,7 @@
     <string name="height">Estatura</string>
     <string name="avatar">Avatar</string>
     <string name="finish">Terminar registro</string>
+    <string name="signup_error"> Error, intente de nuevo</string>
 
     <!-- Error de formato -->
     <string name="error">Error</string>

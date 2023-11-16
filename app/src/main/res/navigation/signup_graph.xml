@@ -18,5 +18,9 @@
         android:id="@+id/userInfoFragment"
         android:name="com.example.cartelerapp.signUp.view.UserInfoFragment"
         android:label="fragment_user_info"
-        tools:layout="@layout/fragment_user_info" />
+        tools:layout="@layout/fragment_user_info" >
+        <argument
+            android:name="EmailPassFirebaseID"
+            app:argType="string[]" />
+    </fragment>
 </navigation>

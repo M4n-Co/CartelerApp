@@ -1,28 +1,48 @@
 package com.example.cartelerapp.signUp.view
 
 import android.app.DatePickerDialog
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.cartelerapp.R
 import com.example.cartelerapp.databinding.FragmentUserInfoBinding
+import com.example.cartelerapp.home.activity.HomeActivity
+import com.example.cartelerapp.signUp.request.NewUserRequest
+import com.example.cartelerapp.signUp.viewModel.SignUpViewModel
+import com.example.cartelerapp.splash.LoadingActivity
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
+@AndroidEntryPoint
 class UserInfoFragment : Fragment() {
 
     private var _binding : FragmentUserInfoBinding? = null
     private val binding get() = _binding!!
-    lateinit var fActivity: SignUpActivity
+    private lateinit var fActivity: SignUpActivity
 
-    private var date = ""
-    private var gender = "otro"
+    private val viewModel : SignUpViewModel by viewModels()
+
+    private val args : UserInfoFragmentArgs by navArgs()
+
+    private val nuFirebaseId : String get() = args.EmailPassFirebaseID[2]
+    private val nuEmail : String get() = args.EmailPassFirebaseID[0]
+    private val nuPass : String get() = args.EmailPassFirebaseID[1]
+    private var nuBirthdate = ""
+    private var nuGender = ""
+    private var nuSubscription = "free"
+    private var nuTecnologia = "ANDROID"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +61,37 @@ class UserInfoFragment : Fragment() {
     private fun initUI() {
         initListeners()
         initTextChangedListener()
+        viewModelObserves()
+    }
+
+    private fun viewModelObserves(){
+        viewModel.signUpResult.observe(viewLifecycleOwner){
+            if (it){
+                login()
+            }else{
+                Toast.makeText(requireContext(), R.string.signup_error, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        viewModel.loading.observe(viewLifecycleOwner){
+            binding.pbSignUpUser.isVisible = it
+        }
+
+    }
+
+    private fun login() {
+
+        val sharedPreferences = requireActivity().getSharedPreferences(LoadingActivity.SHARED_KEY, Context.MODE_PRIVATE)
+        val editShared = sharedPreferences.edit()
+        editShared.apply {
+            putString(LoadingActivity.EMAIL_KEY, nuEmail)
+        }.apply()
+
+        val intent = Intent(requireContext(), HomeActivity::class.java).apply {
+            putExtra(LoadingActivity.EMAIL_KEY, nuEmail)
+        }
+        startActivity(intent)
+        fActivity.finish()
     }
 
     private fun initTextChangedListener() {
@@ -62,9 +113,6 @@ class UserInfoFragment : Fragment() {
         binding.etHeight.doAfterTextChanged {
             binding.tilHeight.error = null
         }
-        binding.etAvatar.doAfterTextChanged {
-            binding.tilAvatar.error = null
-        }
     }
 
     private fun initListeners() {
@@ -74,17 +122,17 @@ class UserInfoFragment : Fragment() {
 
         binding.btnOther.setOnClickListener {
             setButtonSelection(true, false, false)
-            gender = "otro"
+            nuGender = "otro"
         }
 
         binding.btnWoman.setOnClickListener {
             setButtonSelection(false, true, false)
-            gender = "femenino"
+            nuGender = "femenino"
         }
 
         binding.btnMen.setOnClickListener {
             setButtonSelection(false, false, true)
-            gender = "masculino"
+            nuGender = "masculino"
         }
 
         binding.btnOther.performClick()
@@ -92,14 +140,7 @@ class UserInfoFragment : Fragment() {
         binding.btnFinishSignUp.setOnClickListener {
             if (valida()){
 
-                binding.pbSignUpUser.isVisible = true
-                val name = binding.etName.text.toString().trim()
-                val lastName = binding.etLastName.text.toString().trim()
-                val phone = binding.etPhone.text.toString().trim()
-                val weight = binding.etWeight.text.toString().trim()
-                val height = binding.etHeight.text.toString().trim()
-                val avatar = binding.etAvatar.text.toString().trim()
-                fActivity.finishRegistration(name, lastName, date, gender, phone, weight, height, avatar)
+                finishRegistration()
 
             }
         }
@@ -158,7 +199,34 @@ class UserInfoFragment : Fragment() {
 
         val formatToBcck = "yyyy-MM-dd"
         val sdfToback = SimpleDateFormat(formatToBcck, Locale.UK)
-        date = sdfToback.format(currentDate.time)
+        nuBirthdate = sdfToback.format(currentDate.time)
+    }
+
+    private fun finishRegistration() {
+
+        val name = binding.etName.text.toString().trim()
+        val lastName = binding.etLastName.text.toString().trim()
+        val phone = binding.etPhone.text.toString().trim()
+        val weight = binding.etWeight.text.toString().trim()
+        val height = binding.etHeight.text.toString().trim()
+
+        val newUser = NewUserRequest(
+            firebaseId = nuFirebaseId,
+            email = nuEmail,
+            nombre = name,
+            apellido = lastName,
+            fechaNacimiento = nuBirthdate,
+            sexo = nuGender,
+            telefono = phone,
+            peso = weight,
+            username = nuEmail,
+            password = nuPass,
+            estatura = height,
+            avatar = "Avatar",
+            suscription = nuSubscription,
+            tecnologia = nuTecnologia)
+
+        viewModel.signUpUser(newUser)
     }
 
     private fun valida():Boolean{
@@ -197,12 +265,6 @@ class UserInfoFragment : Fragment() {
         if(binding.etHeight.text.toString().trim().isEmpty()) {
             binding.tilHeight.requestFocus()
             binding.tilHeight.error = getString(R.string.required_field)
-            ok = false
-        }
-
-        if(binding.etAvatar.text.toString().trim().isEmpty()) {
-            binding.tilAvatar.requestFocus()
-            binding.tilAvatar.error = getString(R.string.required_field)
             ok = false
         }
 

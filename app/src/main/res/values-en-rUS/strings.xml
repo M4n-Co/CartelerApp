@@ -39,6 +39,7 @@
     <string name="height">Height</string>
     <string name="avatar">Avatar</string>
     <string name="finish">Finish registration</string>
+    <string name="signup_error"> Error, try again</string>
 
     <!-- Error de formato -->
     <string name="error">Error</string>

@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
+import androidx.navigation.fragment.findNavController
 import com.example.cartelerapp.R
 import com.example.cartelerapp.databinding.FragmentEmailAndPassBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -20,6 +22,7 @@ class EmailAndPassFragment : Fragment() {
 
     private lateinit var fActivity: SignUpActivity
     private val auth : FirebaseAuth = FirebaseAuth.getInstance()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -94,14 +97,23 @@ class EmailAndPassFragment : Fragment() {
                 val email = binding.etEmail.text.toString().trim()
                 val pass = binding.etPass.text.toString().trim()
 
+                binding.pbSignUpUser.isVisible = true
+
                 auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
                         val user = auth.currentUser
                         val firebaseId = user?.uid
+                        if (!firebaseId.isNullOrEmpty()) {
+                            val emailPassFirebaseId = arrayOf(email, pass, firebaseId)
+                            binding.pbSignUpUser.isVisible = false
+                            findNavController().navigate(
+                                EmailAndPassFragmentDirections.actionEmailAndPassFragmentToUserInfoFragment(emailPassFirebaseId)
+                            )
+                        }
 
-                        fActivity.initRegistration(email, pass, firebaseId!!)
                     } else {
                         showError()
+                        binding.pbSignUpUser.isVisible = false
                     }
                 }
             }

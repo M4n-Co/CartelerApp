@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:elevation="20sp"
+        android:elevation="10dp"
         app:cardBackgroundColor="@color/primary_aux"
         app:cardCornerRadius="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -207,5 +207,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/pbSignUpUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="11dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
