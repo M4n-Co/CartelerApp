@@ -7,7 +7,7 @@ class LocationRepository @Inject constructor(
     private val service: GetLocationService
 ) {
     suspend fun getLocation(
-        latLng : String,
-        apiKey : String
-    )=service.getLocation()
+        lat : String,
+        lon : String
+    )=service.getLocation(lat, lon)
 }

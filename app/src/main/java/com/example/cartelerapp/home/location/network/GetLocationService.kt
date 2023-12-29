@@ -1,12 +1,14 @@
 package com.example.cartelerapp.home.location.network
 
-import com.example.cartelerapp.home.location.response.LocationResponse
+import com.example.cartelerapp.home.location.response.LocationAndAddressResponse
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface GetLocationService {
-    @GET("maps/api/geocode/json?latlng=19.98278,-101.76069&location_type=ROOFTOP&result_type=street_address&key=AIzaSyBrjWg1CDm76swXcG-jPupPvMfAoxFyTbw")
+    @GET("reverse?format=json")
     suspend fun getLocation(
-    ):Response<LocationResponse>
+        @Query("lat") lat : String,
+        @Query("lon") lon : String
+    ):Response<LocationAndAddressResponse>
 }

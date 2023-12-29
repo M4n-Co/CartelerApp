@@ -53,6 +53,7 @@ android {
 }
 
 dependencies {
+    implementation("com.google.android.gms:play-services-awareness:19.0.1")
     val navVersion = "2.7.5"
 
     //NavComponent

@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.example.cartelerapp.R
 import com.example.cartelerapp.databinding.FragmentLocationBinding
@@ -51,7 +53,7 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
         fActivity = (activity as? HomeActivity)!!
         initUI()
 
@@ -65,9 +67,12 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
     private fun viewModelObserves() {
         viewModel.locationResponse.observe(viewLifecycleOwner){
             if (it != null){
-                val location = it.results[0].formatted_address
+                val location = it.display_name
                 binding.tvLocation.text = location
             }
+        }
+        viewModel.loading.observe(viewLifecycleOwner){
+            binding.progressBar.isVisible = it
         }
     }
 
@@ -118,11 +123,12 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
 
                 val ubicacion = "${it.latitude},${it.longitude}"
                 binding.tvLocation.text = ubicacion
-                //viewModel.getLocation(ubicacion, "AIzaSyBrjWg1CDm76swXcG-jPupPvMfAoxFyTbw")
+                viewModel.getLocation(it.latitude.toString(), it.longitude.toString())
 
                 createMapFragment()
             }
         }
+
     }
 
     private fun createMapFragment() {

@@ -36,11 +36,11 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    @Named("google")
+    @Named("geolocalizacion")
     fun provideRetrofitLocation(okHttpClient: OkHttpClient):Retrofit{
         return Retrofit
             .Builder()
-            .baseUrl("https://maps.googleapis.com/")
+            .baseUrl("https://nominatim.openstreetmap.org/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -77,7 +77,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun getLocation(@Named("google") retrofit: Retrofit) : GetLocationService {
+    fun getLocation(@Named("geolocalizacion") retrofit: Retrofit) : GetLocationService {
         return retrofit.create(GetLocationService::class.java)
     }
 }
