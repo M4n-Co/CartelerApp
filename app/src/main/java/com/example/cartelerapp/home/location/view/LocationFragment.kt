@@ -3,12 +3,13 @@ package com.example.cartelerapp.home.location.view
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.LocationManager
 import android.os.Bundle
+import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -28,6 +29,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.combine
 
 @AndroidEntryPoint
 class LocationFragment : Fragment(), OnMapReadyCallback {
@@ -42,6 +44,9 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
     private lateinit var coordinates : LatLng
 
     private val viewModel : LocationViewModel by viewModels()
+
+    private lateinit var mTimer: CountDownTimer
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,9 +65,11 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
     }
     private fun initUI(){
         initListeners()
-        getLocation()
+        setUpCountDownTimer()
         viewModelObserves()
     }
+
+
 
     private fun viewModelObserves() {
         viewModel.locationResponse.observe(viewLifecycleOwner){
@@ -74,6 +81,7 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
         viewModel.loading.observe(viewLifecycleOwner){
             binding.progressBar.isVisible = it
         }
+
     }
 
     private fun initListeners() {
@@ -131,6 +139,21 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
 
     }
 
+    private fun setUpCountDownTimer(){
+        binding.progressBar.isVisible = true
+        mTimer = object: CountDownTimer(1500, 1000){
+            override fun onTick(millisUntilFinished: Long) {
+            }
+
+            override fun onFinish() {
+                binding.progressBar.isVisible = false
+                getLocation()
+                mTimer.cancel()
+            }
+        }
+        mTimer.start()
+    }
+
     private fun createMapFragment() {
         val mapFragment = childFragmentManager.findFragmentById(R.id.fMap) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -149,5 +172,10 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
             5000,
             null
         )
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mTimer.cancel()
     }
 }

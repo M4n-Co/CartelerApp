@@ -31,4 +31,5 @@ class LocationViewModel @Inject constructor(
             }
         }
     }
+
 }
